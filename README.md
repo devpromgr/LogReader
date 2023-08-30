@@ -1,7 +1,7 @@
 # LogReader
 
 Authors: 
-  [Peter Ashley] https://www.linkedin.com/in/petersouleashley/
+  [Peter Ashley](https://www.linkedin.com/in/petersouleashley/)
 
 The purpose of this repository is to experment with ML AI based log ingestion and recognition
 
