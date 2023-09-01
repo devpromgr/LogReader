@@ -21,14 +21,14 @@ Requirements:
 - Minimization of custom engineering, use high level tools like Spark. 
 
 Plan: Basic steps involve:
-1 Identify or generate training data
+1. Identify or generate training data
   - Samples of different log types. (see references)
  	- Samples to determine format
 	- Samples to determine schema
   - Samples of different entity types (names, IPs, ports, numbers) ChatGPT can help generate
   - Schema definitions for different types of information (netflow, endpoint)
 	- Can draw from https://docs.ctpx.secureworks.com/integration/customParsers/schema_antivirus/
-1 Classify a log as a different type (syslog, csv, windows, CEF ...)
+1. Classify a log as a different type (syslog, csv, windows, CEF ...)
 	- Convert most non-whitespace into word tokens
 	- Use fast.ai model from lesson 3/4
 		- Or simple bag of words type classification should be enough
