@@ -3,7 +3,7 @@
 Authors: 
   [Peter Ashley](https://www.linkedin.com/in/petersouleashley/)
 
-The purpose of this repository is to experment with ML AI based log ingestion and recognition
+The purpose of this repository is to experment with ML AI based log ingestion and recognition, in particular attempting to use fast.ai deep learning more that traditional methods (e.g. word frequency features)
 
 Use Case:
 - As a skilled security engineer, I want to make a custom integration for a device's log information, so that it may be processed in standardized way by using known security information schemas. For example, N+ failed login attempts followed by success.
@@ -21,12 +21,14 @@ Requirements:
 - Minimization of custom engineering, use high level tools like Spark. 
 
 Plan: Basic steps involve:
-- Identify or generate training data
+1 Identify or generate training data
   - Samples of different log types. (see references)
+ 	- Samples to determine format
+	- Samples to determine schema
   - Samples of different entity types (names, IPs, ports, numbers) ChatGPT can help generate
   - Schema definitions for different types of information (netflow, endpoint)
 	- Can draw from https://docs.ctpx.secureworks.com/integration/customParsers/schema_antivirus/
-- Classify a log as a different type (syslog, csv, windows, CEF ...)
+1 Classify a log as a different type (syslog, csv, windows, CEF ...)
 	- Convert most non-whitespace into word tokens
 	- Use fast.ai model from lesson 3/4
 		- Or simple bag of words type classification should be enough
