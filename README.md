@@ -20,7 +20,7 @@ Requirements:
 - Results would be edited and used to generate a high performance log parser as a follow on project.
 - Minimization of custom engineering, use high level tools like fast.ai and Spark. 
 
-Step 1 : Identify log format type (syslog, CEF, etc.) 
+## Step 1 : Identify log format type (syslog, CEF, etc.) 
 
 This was accomplished most simply with regex matching as many of the logs have formats that can be identified by signature. Sample python code was generated in a notebook that can be run on kaggle to identify the type of file.
 
@@ -28,7 +28,7 @@ Kaggle URL	: https://www.kaggle.com/code/peterashley/classifylogdevicetypes
 notebook	: notebooks\determinelogtype.ipynb
 test data	: TrainingSources\LogfilesByType.csv
 
-Step 2 : Determine log device type
+## Step 2 : Determine log device type
 
 Identification of the log source device with deep learning was accomplished by gathering a number of log types from internet resources, especially from logpai/loghub github listed in reference section. These logs were chunked and/or truncated into folders by type to make a training dataset. The notebook makes a fast.ai text classification learner, trains and validates it. 
 
@@ -53,9 +53,9 @@ tensor(5),
 tensor([3.2136e-03, 1.0244e-03, 1.6429e-06, 9.5284e-05, 7.1151e-03, 9.8660e-01,
 		5.0567e-04, 1.3690e-03, 3.9699e-06, 7.4702e-05]))
 
-Step 3 : Entity identification (data = IP address, name, number, host, date, etc.)
+## Step 3 : Entity identification (data = IP address, name, number, host, date, etc.)
 
-Step 4 : Log to schema mapping
+## Step 4 : Log to schema mapping
 
 	
 Reference:
