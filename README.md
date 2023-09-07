@@ -53,7 +53,7 @@ tensor(5),
 tensor([3.2136e-03, 1.0244e-03, 1.6429e-06, 9.5284e-05, 7.1151e-03, 9.8660e-01,
 		5.0567e-04, 1.3690e-03, 3.9699e-06, 7.4702e-05]))
 
-## Step 3 : Entity identification (data = IP address, name, number, host, date, etc.)
+## Step 3 : Entity identification (data = IP address, name, number, date...)
 
 ## Step 4 : Log to schema mapping
 
