@@ -53,11 +53,18 @@ tensor(5),
 tensor([3.2136e-03, 1.0244e-03, 1.6429e-06, 9.5284e-05, 7.1151e-03, 9.8660e-01,
 		5.0567e-04, 1.3690e-03, 3.9699e-06, 7.4702e-05]))
 
-## Step 3 : Entity identification (data = IP address, name, number, date...)
+## Experiment 3 : Entity identification (data = IP address, name, number, date...)
 
-## Step 4 : Log to schema mapping
+Plan: Use generative AI or fragmentation of existing files to create training data consisting of different types and representations of entity types. Use neural net to train on dataset and then apply to tokens/words parsed out of log file. 
 
-	
+- Kaggle URL	: 
+- notebook		: 
+- test data		: 
+
+## Experiment 4 : Log to schema mapping
+
+Ideally I'd like to use existing logs labeled with schema type to match, but may not be able to get this data publicly. 	
+
 Reference:
 - https://ossec.net/docs/log_samples/
 - https://github.com/logpai/loghub
