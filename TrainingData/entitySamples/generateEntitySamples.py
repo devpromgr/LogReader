@@ -62,7 +62,7 @@ filename = 'entityData.csv'
 
 # Define a list of prompt and label strings with corresponding index values
 numberToGenerate = 50
-callIterations = 1
+callIterations = 10
 
 prompt_prefix =f"generate {numberToGenerate} random"
 prompt_instruction = "Do not number the output adding any extra characters or give any text before or after the list"
@@ -112,6 +112,9 @@ original_directory = os.getcwd()
 # use up too many tokens with too big a result so make multiple calls
 for j in range(callIterations):
 
+    #reset conversation so we don't get too much context and use too many tokens.
+    messages=messagesBase
+    
     # walk through prompts
     for i in range(len(prompt_list)):
 
@@ -120,18 +123,8 @@ for j in range(callIterations):
         label = label_list[i]
         print(label," ",prompt)
 
-        # Create directories if it doesn't exist
-        #try:
-        #    os.mkdir(label)
-        #except Exception as e:    
-        #    exception = e
-        # ignore if directory already exists
- 
-        # Open the CSV file for each label 
-        #filename = os.path.join(label, f"data_{label}.csv")
-        #print(filename)
 
-        # Define the new directory name
+        # Put data in subdirectories to stage for training
         # Return to the original directory
         os.chdir(original_directory)
         new_directory_name = label
@@ -153,31 +146,3 @@ for j in range(callIterations):
 
 quit()
 
-# Get the current working directory
-original_directory = os.getcwd()
-
-# Define the new directory name
-new_directory_name = "my_new_directory"
-
-# Create a new directory
-os.makedirs(new_directory_name, exist_ok=True)
-
-# Change the current working directory to the new directory
-os.chdir(new_directory_name)
-
-# Write a file in the new directory
-with open("my_file.txt", "w") as file:
-    file.write("Hello, this is a file in the new directory!")
-
-# Return to the original directory
-os.chdir(original_directory)
-
-"""
-# Write CSV files in each directory
-for i, directory in enumerate(directories):
-    file_path = os.path.join(directory, f"data{i + 1}.csv")
-    with open(file_path, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(csv_data[i])
-
-"""
