@@ -106,6 +106,9 @@ if interactiveMode:
 
 # normal programmatic mode
 
+# Get the current working directory as we will be writing files is subdirectories
+original_directory = os.getcwd()
+
 # use up too many tokens with too big a result so make multiple calls
 for j in range(callIterations):
 
@@ -127,6 +130,15 @@ for j in range(callIterations):
         # Open the CSV file for each label 
         #filename = os.path.join(label, f"data_{label}.csv")
         #print(filename)
+
+        # Define the new directory name
+        # Return to the original directory
+        os.chdir(original_directory)
+        new_directory_name = label
+        os.makedirs(new_directory_name, exist_ok=True)
+        # Change the current working directory to the new directory
+        os.chdir(new_directory_name)
+
         filename = label+".csv"
         file = open_csv_file(filename)
 
@@ -140,6 +152,25 @@ for j in range(callIterations):
             append_to_csv(file, reply, label)
 
 quit()
+
+# Get the current working directory
+original_directory = os.getcwd()
+
+# Define the new directory name
+new_directory_name = "my_new_directory"
+
+# Create a new directory
+os.makedirs(new_directory_name, exist_ok=True)
+
+# Change the current working directory to the new directory
+os.chdir(new_directory_name)
+
+# Write a file in the new directory
+with open("my_file.txt", "w") as file:
+    file.write("Hello, this is a file in the new directory!")
+
+# Return to the original directory
+os.chdir(original_directory)
 
 """
 # Write CSV files in each directory
