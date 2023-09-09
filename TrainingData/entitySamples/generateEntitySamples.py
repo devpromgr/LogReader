@@ -31,8 +31,7 @@ def getReply(messages, request):
             {"role": "user", "content": request},
         )
 
-    # protect API call with exception and ignore error.  unfortunately API seems to time out frequently. 
-    #try:
+    # if the call times out it's usually because the conversation or response gets too big
     chat = openai.ChatCompletion.create(
         model=openaiModel, 
         messages=messages,
@@ -42,16 +41,9 @@ def getReply(messages, request):
     messages.append({"role": "assistant", "content": reply})
     return messages, reply
 
-"""
-    except Exception as e:    
-        if e: 
-            print(e)   
-            print('Timeout error, retrying...')    
-        else:    
-            raise e  
-"""    
 
 import csv
+import os
 
 # Function to open the CSV file for writing and return the writer object
 def open_csv_file(filename):
@@ -125,8 +117,17 @@ for j in range(callIterations):
         label = label_list[i]
         print(label," ",prompt)
 
+        # Create directories if it doesn't exist
+        #try:
+        #    os.mkdir(label)
+        #except Exception as e:    
+        #    exception = e
+        # ignore if directory already exists
+ 
         # Open the CSV file for each label 
-        filename = label
+        #filename = os.path.join(label, f"data_{label}.csv")
+        #print(filename)
+        filename = label+".csv"
         file = open_csv_file(filename)
 
         # run function
@@ -140,3 +141,12 @@ for j in range(callIterations):
 
 quit()
 
+"""
+# Write CSV files in each directory
+for i, directory in enumerate(directories):
+    file_path = os.path.join(directory, f"data{i + 1}.csv")
+    with open(file_path, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(csv_data[i])
+
+"""
