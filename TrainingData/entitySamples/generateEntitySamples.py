@@ -72,7 +72,7 @@ prompt_list = [
     "IP addresses.",
     "single names.",
     "host names that may contain a digits, underscores or hyphens.",
-    "integers between 0 and 1000000 in different formats.",
+    "integers between 0 and 1000000 consisting only of numeric digits.",
     "real numbers between 0 and 1000000 in different formats.",
     "dates in different formats.",
     "times in different formats.",
@@ -120,7 +120,7 @@ for j in range(callIterations):
     for i in range(len(prompt_list)):
 
         # Access each string using the index and perform an action
-        prompt = prompt_prefix+" "+prompt_list[i]+" "+prompt_instruction
+        prompt = prompt_prefix+" "+prompt_list[i]+" using seed "+str(j)+". "+prompt_instruction
         label = label_list[i]
         print(label," ",prompt)
 
