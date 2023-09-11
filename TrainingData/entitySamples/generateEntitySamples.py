@@ -63,6 +63,7 @@ filename = 'entityData.csv'
 # Define a list of prompt and label strings with corresponding index values
 numberToGenerate = 50
 callIterations = 10
+placeLabelsInDirectories=False
 
 prompt_prefix =f"generate {numberToGenerate} random"
 prompt_instruction = "Do not number the output adding any extra characters or give any text before or after the list"
@@ -106,7 +107,7 @@ if interactiveMode:
 
 # normal programmatic mode
 
-# Get the current working directory as we will be writing files is subdirectories
+# Get the current working directory if we will be writing files in subdirectories
 original_directory = os.getcwd()
 
 # use up too many tokens with too big a result so make multiple calls
@@ -123,16 +124,17 @@ for j in range(callIterations):
         label = label_list[i]
         print(label," ",prompt)
 
+        if placeLabelsInDirectories:
+            # Put data in subdirectories to stage for training
+            # Return to the original directory
+            os.chdir(original_directory)
+            new_directory_name = label
+            os.makedirs(new_directory_name, exist_ok=True)
+            # Change the current working directory to the new directory
+            os.chdir(new_directory_name)
+            filename = label+".csv"
 
-        # Put data in subdirectories to stage for training
-        # Return to the original directory
-        os.chdir(original_directory)
-        new_directory_name = label
-        os.makedirs(new_directory_name, exist_ok=True)
-        # Change the current working directory to the new directory
-        os.chdir(new_directory_name)
-
-        filename = label+".csv"
+        # open file for append
         file = open_csv_file(filename)
 
         # run function
@@ -142,7 +144,11 @@ for j in range(callIterations):
 
         # Iterate through the list of reply lines and print each line separately with index label
         for reply in replies:
-            append_to_csv(file, reply, label)
+            if placeLabelsInDirectories:
+                append_to_csv(file, reply)
+            else:
+                append_to_csv(file, reply, label)
+            
 
 quit()
 
