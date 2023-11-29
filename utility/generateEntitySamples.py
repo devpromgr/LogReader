@@ -1,8 +1,8 @@
 #pip install openai
 
 import openai
-#openai.api_key = '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'
-openai.api_key = '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'
+#openai.api_key = 'sk-eC86VQNyDUDpEb'
+openai.api_key = 'sk-bMjqQ6z3TpyN1hE'
 
 # not enough tokens with -> openaiModel = "gpt-3.5-turbo"
 # 16k tokens
